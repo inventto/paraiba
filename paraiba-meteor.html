@@ -1,0 +1,47 @@
+<head>
+  <title>Paraíba Live</title>
+</head>
+
+<body>
+  {{> yourcard}}
+  {{> cards}}
+  {{> mouses}}
+</body>
+
+<template name="mouses">
+  {{#each mouses}}
+    {{> mouse}}
+  {{/each}}
+</template>
+<template name="mouse">
+  <div id="mouse{{_id}}" style="width:10px;background-color: {{color}}; height: 10px;position:absolute; top: {{y}}px; left: {{x}}px;z-index:+10;">
+  </div>
+</template>
+<template name="card">
+  <div id="card{{_id}}" class="card">
+  <div class="mouses_count">{{mousesCount}}</div>
+  <span class="name">{{name}}!</span>
+  <span class="description">{{description}}</span>
+  <span class="email"><a href="mailto:{{email}}">{{email}}</a></span>
+  <span class="site"><a href="{{site}}">{{site}}</a></span>
+  <span class="phone"><a href="tel:{{phone}}">{{phone}}</a></span>
+  <input type="button" class="remove" value="Remove" />
+  <input type="button" class="first" value="Be First" />
+</div>
+</template>
+<template name="yourcard">
+  <input id="name" value="{{name}}" placeholder="name" />
+  <input id="description" value="{{description}}" placeholder="description" />
+  <input id="email" value="{{email}}" placeholder="please@email.me" />
+  <input id="site" value="{{site}}" placeholder="site" />
+  <input id="phone" value="{{phone}}" placeholder="phone" />
+  <input type="button" class="add" value="Add" />
+</div>
+</template>
+<template name="cards">
+  <div id="cards">
+     {{#each cards}}
+        {{> card}}
+     {{/each}}
+ </div>
+</template>

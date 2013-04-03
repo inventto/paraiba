@@ -1,0 +1,46 @@
+/* CSS declarations go here */
+.card {
+  padding: 10px;
+  background-color: orange;
+  margin: 20px;
+  width: 200px;
+  height: 120px;
+  float: left;
+}
+.name {
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+
+.description {
+  font-size: 10px;
+  color: black;
+  background-color: white;
+  white-space: nowrap;
+}
+.site a, .phone a, .email a {
+  padding: 2px;
+  text-decoration: none;
+}
+.site {
+  color: red;
+  background-color: yellow;
+}
+.phone {
+  color: orange;
+  background-color: white
+}
+.mouses_count {
+height: 32px;
+width: 32px;
+-webkit-border-radius: 5em;
+-moz-border-radius: 5em;
+border: 0.01em dotted #888943;
+background-color: black;
+color: white;
+text-align: center;
+margin: auto;
+font-size: 20px;
+position: relative;
+}
