@@ -69,3 +69,11 @@ ul li span {
   float: left;
   width: 95%;
 }
+.template1 * {
+  text-align: center
+}
+.template1 .name {
+  position: relative;
+  top: 0px;
+  right: 0px;
+}

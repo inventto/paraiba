@@ -18,10 +18,10 @@
   </div>
 </template>
 <template name="card">
-  <div id="card{{_id}}" class="card">
+  <div id="card{{_id}}" class="card template1">
   <div class="mouses_count">{{mousesCount}}</div>
-  <span class="name">{{name}}!</span>
-  <span class="services">{{services}}</span>
+  <div class="name">{{name}}!</div>
+  <div class="services">{{services}}</div>
   <div class="emails">
   {{#each emails}}
   <span class="email"><a href="mailto:{{email}}">{{email}}</a></span>
@@ -70,6 +70,7 @@
     <input id="site" value="{{site}}" placeholder="www.joaodasilva.com.br" />
     <input type="button" class="add_other" value="+" add_to="Sites"  />
     <ul>
+
     {{#each sites}}
       <li><span class="site">{{site}}</span> <a href="#" class="delete" from="Sites">x</a></li>
     {{/each}}
