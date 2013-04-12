@@ -1,46 +1,71 @@
 /* CSS declarations go here */
+body {
+  background-color: #eee;
+}
 .card {
   padding: 10px;
-  background-color: orange;
+  background-color: white;
   margin: 20px;
   width: 360px;
-  height: 200px;
+  min-height: 200px;
   float: left;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 .name {
   font-size: 20px;
-  color: white;
+  color: black;
   display: block;
 }
 
 .services{
   font-size: 10px;
   color: black;
-  background-color: white;
-  white-space: nowrap;
 }
 .site a, .phone a, .email a {
   padding: 2px;
   text-decoration: none;
 }
 .site {
-  color: red;
-  background-color: yellow;
 }
 .phone {
-  color: orange;
-  background-color: white
 }
 .mouses_count {
-height: 32px;
-width: 32px;
--webkit-border-radius: 5em;
--moz-border-radius: 5em;
-border: 0.01em dotted #888943;
-background-color: black;
-color: white;
-text-align: center;
-margin: auto;
-font-size: 20px;
-position: relative;
+  height: 32px;
+  width: 32px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 2px 0;
+  float: right;
+  margin: -25px;
+}
+label {
+  min-width: 100px;
+  display: block;
+  float: left;
+}
+select {
+  max-width: 70px;
+}
+#phones #number {
+  max-width: 70px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #ddd;
+}
+ul li span {
+  display:block;
+  float: left;
+  width: 95%;
 }

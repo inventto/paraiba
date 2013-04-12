@@ -34,15 +34,18 @@
   </div>
   <div class="phones">
   {{#each phones}}
-  <span class="phone"><a href="tel:{{phone}}">{{phone}}</a></span>
+  <span class="phone"><a href="tel:{{number}}">{{number}} - {{phone_type}}</a></span>
   {{/each}}
   </div>
-  <input type="button" class="remove" value="Remove" />
-  <input type="button" class="first" value="Be First" />
+  {{#if $not editing}}
+    <input type="button" class="remove" value="Remove" />
+    <input type="button" class="first" value="Be First" />
+  {{/if}}
 </div>
 </template>
 <template name="yourcard" >
 <div id="mycard" class="your card">
+  {{#with editing_card}}
   <div>
     <label for="name">Nome:</label>
     <input id="name" value="{{name}}" placeholder="João da Silva" />
@@ -51,13 +54,14 @@
     <label for="services">Produtos/Serviços:</label>
     <input id="services" value="{{services}}" placeholder="Eletricista, Marido de aluguel" />
   </div>
+  {{/with}}
   <div>
     <label for="email">Email:</label>
     <input id="email" value="{{email}}" placeholder="joao@dasilva.com" />
-    <input type="button" class="add_other" add_to="Emails" />
+    <input type="button" class="add_other" value="+" add_to="Emails" />
     <ul>
     {{#each emails}}
-    <li><span class="email"><a href="mailto:{{email}}">{{email}}</a></span> <a href="#" class="delete" from="Emails">x</a></ul>
+    <li><span class="email">{{email}}</span> <a href="#" class="delete" from="Emails">x</a></ul>
     {{/each}}
     </ul>
   </div>
@@ -67,7 +71,7 @@
     <input type="button" class="add_other" value="+" add_to="Sites"  />
     <ul>
     {{#each sites}}
-      <li><span class="site"><a href="{{site}}">{{site}}</a></span> <a href="#" class="delete" from="Sites">x</a></li>
+      <li><span class="site">{{site}}</span> <a href="#" class="delete" from="Sites">x</a></li>
     {{/each}}
     </ul>
   </div>
@@ -83,7 +87,7 @@
     <input type="button" class="add_other" value="+" add_to="Phones"  />
     <ul>
     {{#each phones}}
-       <li>{{phone_type}}:{{number}} <a href="#" class="delete" from="Phones">x</a></li>
+    <li><span>{{phone_type}}:{{number}}</span> <a href="#" class="delete" from="Phones">x</a></li>
     {{/each}}
     </ul>
   </div>

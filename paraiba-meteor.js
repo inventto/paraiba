@@ -48,6 +48,9 @@ if (Meteor.isClient) {
   Template.card.sites= function(){
     return Sites.find({card_id:this._id});
   };
+  Template.yourcard.editing_card = function(){
+    return Cards.findOne(Session.get("myCard"));
+  }
   Template.yourcard.phones = function(){
     return Phones.find({card_id: Session.get("myCard")});
   }
@@ -58,13 +61,14 @@ if (Meteor.isClient) {
     return Emails.find({card_id: Session.get("myCard")});
   }
   Template.yourcard.events({
-    "keyup input" : function (evt) {
+    "keyup input, change input" : function (evt) {
       value = get(evt.target.id);
       update = {};
       update[evt.target.id] = value;
       Cards.update(Session.get("myCard"), {$set: update});
     },
     'click input.add' : function (evt) {
+      console.log("publicando ", this._id, this);
       Cards.update(this._id,
         {$set: {
         description: get("description"),
@@ -78,11 +82,15 @@ if (Meteor.isClient) {
       collection = eval($(evt.target).attr('add_to'));
       data = { card_id : Session.get("myCard") };
       console.log( 'SELECTOR',$(evt.target).parent().find("input:not([type=button]), select"));
+      cancel = false;
       $(evt.target).parent().find("input:not([type=button]), select").each(function(i,element){
+        if (element.value == null || element.value.length == 0)
+          cancel = true;
         data[element.id ] = element.value;
         if (element.type == "text")
           element.value = "";
       });
+      if (cancel) return;
       console.log(data);
       collection.insert( data);
     },
