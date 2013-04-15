@@ -37,8 +37,10 @@
   <span class="phone"><a href="tel:{{phone}}">{{phone}} - {{phone_type}}</a></span>
   {{/each}}
   </div>
-  {{#if $not editing}}
+  {{#if editing}}
+  {{else}}
     <input type="button" class="remove" value="Remove" />
+    <input type="button" class="edit" value="Editar" />
     <input type="button" class="first" value="Be First" />
   {{/if}}
 </div>

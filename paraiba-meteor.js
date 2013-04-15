@@ -30,15 +30,15 @@ if (Meteor.isClient) {
     if (Session.get("myCard"))
       return ;
     else
-      Session.set("myCard", 
+      newCard();
+  });
+  newCard = function() {
+      Session.set("myCard",
         Cards.insert({
-          description: get("description"),
-          name: get("name"),
           editing: true,
           first_at: now() + 1000000
       }));
-  });
-
+  }
   Template.card.emails = function(){
     return Emails.find({card_id:this._id});
   };
@@ -68,15 +68,23 @@ if (Meteor.isClient) {
       Cards.update(Session.get("myCard"), {$set: update});
     },
     'click input.add' : function (evt) {
-      console.log("publicando ", this._id, this);
-      Cards.update(this._id,
+      id = Session.get("myCard");
+      console.log("publicando ", id);
+      Cards.update(id,
         {$set: {
-        description: get("description"),
+        services: get("services"),
         name: get("name"),
-        first_at: now(),
         editing: null
        }
       });
+      if (Cards.findOne(id).first_at > now()) {
+        Cards.update(id,
+          {$set: {
+            first_at: now(),
+          }
+         });
+      }
+      newCard();
     },
     'click input.add_other' : function (evt) {
       collection = eval($(evt.target).attr('add_to'));
@@ -105,6 +113,29 @@ if (Meteor.isClient) {
   Template.card.events({
     'click input.remove' : function () {
       Cards.remove(this._id);
+    },
+    'click input.edit' : function () {
+      id = Session.get("myCard");
+      card = Cards.findOne(id);
+      console.log("vai remover?", card.first_at, now());
+      if (card.first_at > now()) {
+        console.log("removendo",id);
+        Cards.remove(id);
+      } else {
+        console.log("liberando",id);
+        Cards.update(id,
+          {$set: {
+          editing: null
+         }
+        });
+      }
+
+      Session.set("myCard", this._id);
+      Cards.update(this._id,
+        {$set: {
+        editing: true
+       }
+      });
     },
     'click input.first' : function () {
       Cards.update(this._id, {$set: {
