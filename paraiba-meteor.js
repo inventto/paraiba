@@ -95,7 +95,10 @@ if (Meteor.isClient) {
       collection.insert( data);
     },
     'click a.delete': function(evt){
-      collection = eval($(evt.target).attr('from'));
+      from = $(evt.target).attr('from');
+      id = from.toLowerCase().substring(0, from.length - 1);
+      $("#"+id).val(eval("this."+id));
+      collection = eval(from);
       collection.remove(this._id);
     }
   });

@@ -34,7 +34,7 @@
   </div>
   <div class="phones">
   {{#each phones}}
-  <span class="phone"><a href="tel:{{number}}">{{number}} - {{phone_type}}</a></span>
+  <span class="phone"><a href="tel:{{phone}}">{{phone}} - {{phone_type}}</a></span>
   {{/each}}
   </div>
   {{#if $not editing}}
@@ -78,17 +78,17 @@
   </div>
   <div>
   <div id="phones">
-    <label for="number">Telefone:</label>
+    <label for="phone">Telefone:</label>
     <select id="phone_type" value="{{phone_type}}">
       <option value="mobile">Celular</option>
       <option value="home">Residencial</option>
       <option value="work">Comercial</option>
     </select>
-    <input id="number" value="{{phone}}" placeholder="46 22345678" />
+    <input id="phone" value="{{phone}}" placeholder="46 22345678" />
     <input type="button" class="add_other" value="+" add_to="Phones"  />
     <ul>
     {{#each phones}}
-    <li><span>{{phone_type}}:{{number}}</span> <a href="#" class="delete" from="Phones">x</a></li>
+    <li><span>{{phone_type}}:{{phone}}</span> <a href="#" class="delete" from="Phones">x</a></li>
     {{/each}}
     </ul>
   </div>
