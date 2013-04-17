@@ -19,6 +19,10 @@ if (Meteor.isClient) {
   Meteor.startup(function () {
      Session.set('user', Meteor.uuid());
      Session.set("mouse", Mouses.insert({user: Session.get("user"), color: randomColor()}));
+
+    if (!Session.get("myCard"))
+      newCard();
+
   });
   Template.cards.cards = function () {
     return Cards.find({$or: [{editing: null},{ _id: Session.get("myCard")}]},{sort: {first_at: -1}});
@@ -26,12 +30,6 @@ if (Meteor.isClient) {
   Template.mouses.mouses = function () {
     return Mouses.find();
   };
-  Meteor.startup(function(){
-    if (Session.get("myCard"))
-      return ;
-    else
-      newCard();
-  });
   newCard = function() {
       Session.set("myCard",
         Cards.insert({
@@ -59,6 +57,10 @@ if (Meteor.isClient) {
   }
   Template.yourcard.emails = function(){
     return Emails.find({card_id: Session.get("myCard")});
+  }
+  Template.card.logo_url =
+  Template.yourcard.logo_url = function(){
+   return this.logo+ "/convert?w=96&h=96";
   }
   Template.yourcard.events({
     "keyup input, change input" : function (evt) {
@@ -154,8 +156,13 @@ if (Meteor.isClient) {
     },
     'mouseout': function(){
       Mouses.update(Session.get("mouse"), {$set: {over_card: null}});
-    }
+    },
   });
+  Template.yourcard.rendered = function(){
+     filepicker.setKey('AdNr2D8AQiacqq1EFAOxmz');
+     filepicker.constructWidget(document.getElementById('logo'));
+     filepicker.constructWidget(document.getElementById('card_photo'));
+  };
 
   Template.card.mousesCount = function() {
     return Mouses.find({over_card: this._id}).count();

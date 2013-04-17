@@ -37,6 +37,7 @@
   <span class="phone"><a href="tel:{{phone}}">{{phone}} - {{phone_type}}</a></span>
   {{/each}}
   </div>
+  <img id="img_logo" class="logo" src="{{logo_url}}" />
   {{#if editing}}
   {{else}}
     <input type="button" class="remove" value="Remove" />
@@ -48,6 +49,10 @@
 <template name="yourcard" >
 <div id="mycard" class="your card">
   {{#with editing_card}}
+  <img class="logo" src="{{logo_url}}" />
+  <img class="card photo" src="{{card_photo}}" />
+  <input type="filepicker" id="logo" />
+  <input type="filepicker" id="card_photo" />
   <div>
     <label for="name">Nome:</label>
     <input id="name" value="{{name}}" placeholder="João da Silva" />
