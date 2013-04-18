@@ -18,7 +18,8 @@
   </div>
 </template>
 <template name="card">
-  <div id="card{{_id}}" class="card template1">
+<div class="card-wrapper">
+  <div id="card{{_id}}" class="card template1" style="display: block;">
   <div class="mouses_count">{{mousesCount}}</div>
   <div class="name">{{name}}!</div>
   <div class="services">{{services}}</div>
@@ -43,6 +44,15 @@
     <input type="button" class="remove" value="Remove" />
     <input type="button" class="edit" value="Editar" />
     <input type="button" class="first" value="Be First" />
+  {{/if}}
+  {{#if card_photo }}
+  <a href="#" class="flipToPhoto">>></a>
+  {{/if}}
+</div>
+{{#if card_photo }}
+  <div>
+    <img src="{{ card_photo_url }}"/>
+  </div>
   {{/if}}
 </div>
 </template>

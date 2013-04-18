@@ -118,6 +118,9 @@ if (Meteor.isClient) {
       collection.remove(this._id);
     }
   });
+  Template.card.card_photo_url = function(){
+   return this.card_photo + "/convert?w=360&h=200"
+  };
   Template.card.events({
     'click input.remove' : function () {
       Cards.remove(this._id);
@@ -157,6 +160,15 @@ if (Meteor.isClient) {
     'mouseout': function(){
       Mouses.update(Session.get("mouse"), {$set: {over_card: null}});
     },
+    'click': function () {
+      animation = "flipped-vertical-bottom";
+      item = $('#card'+this._id);
+      item.next().addClass('animated ' + animation);
+      item.on('transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd', function() { 
+        item.removeClass();
+        item.addClass("half "+ animation);
+      });
+    }
   });
   Template.yourcard.rendered = function(){
      filepicker.setKey('AdNr2D8AQiacqq1EFAOxmz');

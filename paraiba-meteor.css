@@ -85,3 +85,82 @@ ul li span {
   top: 0px;
   right: 0px;
 }
+
+.card-wrapper {
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+       -o-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.card-wrapper div {
+ position: relative;
+ z-index: 3;
+}
+.animated {
+  z-index: 4;
+  -webkit-transition: .9s ease-out;
+     -moz-transition: .9s ease-out;
+      -ms-transition: .9s ease-out;
+       -o-transition: .9s ease-out;
+          transition: .9s ease-out;
+}
+.flipped-horizontal-right {
+  -webkit-transform: rotateY(180deg);
+     -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+       -o-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flipped-horizontal-left {
+  -webkit-transform: rotateY(-180deg);
+     -moz-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
+       -o-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+.flipped-vertical-top {
+  -webkit-transform: rotateX(180deg);
+     -moz-transform: rotateX(180deg);
+      -ms-transform: rotateX(180deg);
+       -o-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+.flipped-vertical-bottom {
+  -webkit-transform: rotateX(-180deg);
+     -moz-transform: rotateX(-180deg);
+      -ms-transform: rotateX(-180deg);
+       -o-transform: rotateX(-180deg);
+          transform: rotateX(-180deg);
+}
+
+.half.flipped-horizontal-right {
+  -webkit-transform: rotateY(90deg);
+     -moz-transform: rotateY(90deg);
+      -ms-transform: rotateY(90deg);
+       -o-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+}
+
+.half.flipped-horizontal-left {
+  -webkit-transform: rotateY(-90deg);
+     -moz-transform: rotateY(-90deg);
+      -ms-transform: rotateY(-90deg);
+       -o-transform: rotateY(-90deg);
+          transform: rotateY(-90deg);
+}
+.half.flipped-vertical-top {
+  -webkit-transform: rotateX(90deg);
+     -moz-transform: rotateX(90deg);
+      -ms-transform: rotateX(90deg);
+       -o-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+.half.flipped-vertical-bottom {
+  -webkit-transform: rotateX(-90deg);
+     -moz-transform: rotateX(-90deg);
+      -ms-transform: rotateX(-90deg);
+       -o-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
