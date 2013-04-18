@@ -19,7 +19,7 @@
 </template>
 <template name="card">
 <div class="card-wrapper">
-  <div id="card{{_id}}" class="card template1" style="display: block;">
+  <div id="card{{_id}}" class="card template1 horizontal" style="display: block;">
   <div class="mouses_count">{{mousesCount}}</div>
   <div class="name">{{name}}!</div>
   <div class="services">{{services}}</div>
@@ -46,14 +46,15 @@
     <input type="button" class="first" value="Be First" />
   {{/if}}
   {{#if card_photo }}
-  <a href="#" class="flipToPhoto">>></a>
+  <input type="button" onclick="flipToPhoto('{{ _id }}')" value=">>"/>
   {{/if}}
 </div>
 {{#if card_photo }}
-  <div>
+  <div class="hide horizontal">
     <img src="{{ card_photo_url }}"/>
+    <input type="button" onclick="flipToPhoto('{{ _id }}')" value=">>"/>
   </div>
-  {{/if}}
+{{/if}}
 </div>
 </template>
 <template name="yourcard" >

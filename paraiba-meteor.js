@@ -159,15 +159,6 @@ if (Meteor.isClient) {
     },
     'mouseout': function(){
       Mouses.update(Session.get("mouse"), {$set: {over_card: null}});
-    },
-    'click': function () {
-      animation = "flipped-vertical-bottom";
-      item = $('#card'+this._id);
-      item.next().addClass('animated ' + animation);
-      item.on('transitionend webkitTransitionEnd MSTransitionEnd oTransitionEnd', function() { 
-        item.removeClass();
-        item.addClass("half "+ animation);
-      });
     }
   });
   Template.yourcard.rendered = function(){
@@ -179,6 +170,31 @@ if (Meteor.isClient) {
   Template.card.mousesCount = function() {
     return Mouses.find({over_card: this._id}).count();
   };
+
+  flipToPhoto = function (id) {
+    toHide = $($('#card'+id).parent().children(":not(.hide)")[0]);
+    console.log(toHide);
+    toShow = toHide.next();
+    if (toShow.length == 0) {
+          toShow = $($('#card'+id).parent().children()[0]);
+    }
+    console.log(toShow);
+
+    toHide.removeClass("animated");
+    toShow.removeClass("animated");
+    toShow.addClass("reverse");
+    toHide.removeClass("reverse");
+
+    toHide.addClass("animated");
+    toHide.addClass("hide");
+    toShow.removeClass("invisible");
+    setTimeout(function() {
+        toHide.addClass("invisible");
+        toShow.addClass("animated");
+        toShow.removeClass("hide");
+    }, 300);
+
+  }
 }
 
 if (Meteor.isServer) {
