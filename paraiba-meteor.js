@@ -167,7 +167,7 @@ if (Meteor.isClient) {
      filepicker.constructWidget(document.getElementById('card_photo'));
   };
 
-  Template.card.mousesCount = function() {
+  Template.mousescount.mousesCount = function() {
     return Mouses.find({over_card: this._id}).count();
   };
 

@@ -17,10 +17,13 @@
   <div id="mouse{{_id}}" style="width:10px;background-color: {{color}}; height: 10px;position:absolute; top: {{y}}px; left: {{x}}px;z-index:+10;">
   </div>
 </template>
+<template name="mousescount">
+<div class="mouses_count">{{mousesCount}}</div>
+</template>
 <template name="card">
 <div class="card-wrapper">
   <div id="card{{_id}}" class="card template1 horizontal" style="display: block;">
-  <div class="mouses_count">{{mousesCount}}</div>
+    {{> mousescount}}
   <div class="name">{{name}}!</div>
   <div class="services">{{services}}</div>
   <div class="emails">
