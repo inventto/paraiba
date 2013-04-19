@@ -25,7 +25,8 @@ if (Meteor.isClient) {
 
   });
   Template.cards.cards = function () {
-    return Cards.find({$or: [{editing: null},{ _id: Session.get("myCard")}]},{sort: {first_at: -1}});
+    return Cards.find({name: {$not: null}},{sort: {first_at: -1}});
+    //$or: [{editing: null},{ _id: Session.get("myCard")}]
   };
   Template.mouses.mouses = function () {
     return Mouses.find();
@@ -153,19 +154,38 @@ if (Meteor.isClient) {
         first_at: now()
       }});
     },
-    'mouseover': function(evt){
+    'mouseover .layer': function(evt){
       console.log("mouseover ", evt);
       Mouses.update(Session.get("mouse"), {$set: {over_card: this._id, x: evt.clientX, y: evt.clientY}});
     },
-    'mouseout': function(){
+    'mouseout .layer': function(){
       Mouses.update(Session.get("mouse"), {$set: {over_card: null}});
+    },
+    'click .layer': function(){
+      flipToPhoto(this._id);
     }
   });
+  arrangeCards = function() {
+    /*$('#cards').masonry({
+      itemSelector: '.card-wrapper',
+      isAnimated: true
+    });*/
+  }
   Template.yourcard.rendered = function(){
-     filepicker.setKey('AdNr2D8AQiacqq1EFAOxmz');
-     filepicker.constructWidget(document.getElementById('logo'));
-     filepicker.constructWidget(document.getElementById('card_photo'));
-  };
+    filepicker.setKey('AdNr2D8AQiacqq1EFAOxmz');
+    filepicker.constructWidget(document.getElementById('logo'));
+    filepicker.constructWidget(document.getElementById('card_photo'));
+    elem = $(this.firstNode);
+    child = $(this.firstNode).children(".card");
+    elem.height(child.height());
+    arrangeCards();
+  }
+  Template.card.rendered = function() {
+    elem = $(this.firstNode);
+    child = $(this.firstNode).children(".card");
+    elem.height(child.height());
+    arrangeCards();
+  }
 
   Template.mousescount.mousesCount = function() {
     return Mouses.find({over_card: this._id}).count();
@@ -189,7 +209,8 @@ if (Meteor.isClient) {
     toHide.addClass("hide");
     toShow.removeClass("invisible");
     setTimeout(function() {
-        toHide.addClass("invisible");
+        if (toShow[0].id != toHide[0].id)
+          toHide.addClass("invisible");
         toShow.addClass("animated");
         toShow.removeClass("hide");
     }, 300);

@@ -3,8 +3,10 @@
 </head>
 
 <body>
-  {{> yourcard}}
-  {{> cards}}
+  <div id="cards">
+    {{> yourcard}}
+    {{> cards}}
+  </div>
   {{> mouses}}
 </body>
 
@@ -22,8 +24,11 @@
 </template>
 <template name="card">
 <div class="card-wrapper">
-  <div id="card{{_id}}" class="card template1 horizontal" style="display: block;">
+  <div id="card{{_id}}" class="card template1 horizontal layer">
     {{> mousescount}}
+    <div id="img_logo">
+      <img id="img_logo" class="logo" src="{{logo_url}}" />
+    </div>
   <div class="name">{{name}}!</div>
   <div class="services">{{services}}</div>
   <div class="emails">
@@ -41,7 +46,6 @@
   <span class="phone"><a href="tel:{{phone}}">{{phone}} - {{phone_type}}</a></span>
   {{/each}}
   </div>
-  <img id="img_logo" class="logo" src="{{logo_url}}" />
   {{#if editing}}
   {{else}}
     <input type="button" class="remove" value="Remove" />
@@ -49,18 +53,17 @@
     <input type="button" class="first" value="Be First" />
   {{/if}}
   {{#if card_photo }}
-  <input type="button" onclick="flipToPhoto('{{ _id }}')" value=">>"/>
   {{/if}}
 </div>
 {{#if card_photo }}
-  <div class="hide horizontal">
+  <div class="hide horizontal layer">
     <img src="{{ card_photo_url }}"/>
-    <input type="button" onclick="flipToPhoto('{{ _id }}')" value=">>"/>
   </div>
 {{/if}}
 </div>
 </template>
 <template name="yourcard" >
+<div class="card-wrapper">
 <div id="mycard" class="your card">
   {{#with editing_card}}
   <img class="logo" src="{{logo_url}}" />
@@ -115,11 +118,10 @@
   </div>
   <input type="button" class="add" value="Publicar" />
 </div>
+</div>
 </template>
 <template name="cards">
-  <div id="cards">
-     {{#each cards}}
-        {{> card}}
-     {{/each}}
- </div>
+  {{#each cards}}
+     {{> card}}
+  {{/each}}
 </template>
