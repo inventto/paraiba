@@ -5,7 +5,7 @@ body {
 .card {
   padding: 10px;
   width: 340px;
-  min-height: 180px;
+  min-height: 80px;
 }
 .name {
   font-size: 20px;
@@ -86,7 +86,7 @@ ul li span {
 .card-wrapper {
   margin: 20px;
   width: 360px;
-  min-height: 200px;
+  min-height: 100px;
   float: left;
   -webkit-perspective: 900;
           perspective: 900;

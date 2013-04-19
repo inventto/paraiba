@@ -166,25 +166,26 @@ if (Meteor.isClient) {
     }
   });
   arrangeCards = function() {
-    /*$('#cards').masonry({
+    $('#cards').masonry({
       itemSelector: '.card-wrapper',
       isAnimated: true
-    });*/
+    });
+  }
+  resize = function(elem) {
+    child = elem.children(":not(.hide)");
+    elem.height(child.height());
+    arrangeCards();
   }
   Template.yourcard.rendered = function(){
     filepicker.setKey('AdNr2D8AQiacqq1EFAOxmz');
     filepicker.constructWidget(document.getElementById('logo'));
     filepicker.constructWidget(document.getElementById('card_photo'));
     elem = $(this.firstNode);
-    child = $(this.firstNode).children(".card");
-    elem.height(child.height());
-    arrangeCards();
+    resize(elem);
   }
   Template.card.rendered = function() {
     elem = $(this.firstNode);
-    child = $(this.firstNode).children(".card");
-    elem.height(child.height());
-    arrangeCards();
+    resize(elem);
   }
 
   Template.mousescount.mousesCount = function() {
@@ -214,7 +215,6 @@ if (Meteor.isClient) {
         toShow.addClass("animated");
         toShow.removeClass("hide");
     }, 300);
-
   }
 }
 
