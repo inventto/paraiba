@@ -2,6 +2,59 @@
 body {
   background-color: #eee;
 }
+#cards {
+  clear: both;
+}
+.card-wrapper {
+  margin: 20px;
+  width: 360px;
+  min-height: 100px;
+  float: left;
+  -webkit-perspective: 900;
+          perspective: 900;
+}
+.card-wrapper > div {
+  position: absolute;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 4;
+  -webkit-transition: 0s ease-out;
+     -moz-transition: 0s ease-out;
+      -ms-transition: 0s ease-out;
+       -o-transition: 0s ease-out;
+          transition: 0s ease-out;
+}
+.card-wrapper > div.animated {
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+       -o-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: .3s ease-out;
+     -moz-transition: .3s ease-out;
+      -ms-transition: .3s ease-out;
+       -o-transition: .3s ease-out;
+          transition: .3s ease-out;
+}
+.card-wrapper {
+  -webkit-transition: .1s ease-out;
+     -moz-transition: .1s ease-out;
+      -ms-transition: .1s ease-out;
+       -o-transition: .1s ease-out;
+          transition: .1s ease-out;
+  -webkit-transition-property: top, left, right, height;
+    -moz-transition-property: top, left, right, height;
+     -ms-transition-property: top, left, right, height;
+      -o-transition-property: top, left, right, height;
+         transition-property: top, left, right, height;
+}
+.card-wrapper img {
+  max-width: 360px;
+  max-height: 200px;
+}
 .card {
   padding: 10px;
   width: 340px;
@@ -83,52 +136,6 @@ ul li span {
   top: 0px;
   right: 0px;
 }
-.card-wrapper {
-  margin: 20px;
-  width: 360px;
-  min-height: 100px;
-  float: left;
-  -webkit-perspective: 900;
-          perspective: 900;
-}
-.card-wrapper > div {
-  position: absolute;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  background-color: white;
-  border: 1px solid #ccc;
-  z-index: 4;
-  -webkit-transition: 0s ease-out;
-     -moz-transition: 0s ease-out;
-      -ms-transition: 0s ease-out;
-       -o-transition: 0s ease-out;
-          transition: 0s ease-out;
-}
-.card-wrapper > div.animated {
-  -webkit-transform-style: preserve-3d;
-     -moz-transform-style: preserve-3d;
-      -ms-transform-style: preserve-3d;
-       -o-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: .3s ease-out;
-     -moz-transition: .3s ease-out;
-      -ms-transition: .3s ease-out;
-       -o-transition: .3s ease-out;
-          transition: .3s ease-out;
-}
-.card-wrapper {
-  -webkit-transition: .1s ease-out;
-     -moz-transition: .1s ease-out;
-      -ms-transition: .1s ease-out;
-       -o-transition: .1s ease-out;
-          transition: .1s ease-out;
-  -webkit-transition-property: top, left, right, height;
-    -moz-transition-property: top, left, right, height;
-     -ms-transition-property: top, left, right, height;
-      -o-transition-property: top, left, right, height;
-         transition-property: top, left, right, height;
-}
 .invisible {
   display:none;
 }
@@ -163,8 +170,4 @@ ul li span {
       -ms-transform: rotateX(-90deg);
        -o-transform: rotateX(-90deg);
           transform: rotateX(-90deg);
-}
-.card-wrapper img {
-  max-width: 360px;
-  max-height: 200px;
 }

@@ -3,8 +3,8 @@
 </head>
 
 <body>
+  {{> yourcard}}
   <div id="cards">
-    {{> yourcard}}
     {{> cards}}
   </div>
   {{> mouses}}
@@ -23,7 +23,6 @@
 <div class="mouses_count">{{mousesCount}}</div>
 </template>
 <template name="card">
-<div class="card-wrapper">
   <div id="card{{_id}}" class="card template1 horizontal layer">
     {{> mousescount}}
     <div id="img_logo">
@@ -60,10 +59,10 @@
     <img src="{{ card_photo_url }}"/>
   </div>
 {{/if}}
-</div>
+
 </template>
 <template name="yourcard" >
-<div class="card-wrapper">
+<div class="card-wrapper masonry-brick">
 <div id="mycard" class="your card">
   {{#with editing_card}}
   <img class="logo" src="{{logo_url}}" />
@@ -119,9 +118,19 @@
   <input type="button" class="add" value="Publicar" />
 </div>
 </div>
+</div>
+{{#with editing_card }}
+<div class="card-wrapper masonry-brick" style="position: relative">
+   {{> card}}
+</div>
+{{/with}}
+
+
 </template>
 <template name="cards">
   {{#each cards}}
+  <div class="card-wrapper">
      {{> card}}
+   </div>
   {{/each}}
 </template>

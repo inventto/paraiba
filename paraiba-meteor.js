@@ -25,7 +25,7 @@ if (Meteor.isClient) {
 
   });
   Template.cards.cards = function () {
-    return Cards.find({name: {$not: null}},{sort: {first_at: -1}});
+    return Cards.find({editing: null},{sort: {first_at: -1}});
     //$or: [{editing: null},{ _id: Session.get("myCard")}]
   };
   Template.mouses.mouses = function () {
@@ -166,10 +166,10 @@ if (Meteor.isClient) {
     }
   });
   arrangeCards = function() {
-    $('#cards').masonry({
-      itemSelector: '.card-wrapper',
-      isAnimated: true
-    });
+    setTimeout(function() {
+      $('#cards').masonry('appended', $('#cards').children(":not(.masonry-brick)"));
+      //$('#cards').masonry('reload');
+    }, 100);
   }
   resize = function(elem) {
     child = elem.children(":not(.hide)");
@@ -182,6 +182,13 @@ if (Meteor.isClient) {
     filepicker.constructWidget(document.getElementById('card_photo'));
     elem = $(this.firstNode);
     resize(elem);
+  }
+  Template.cards.rendered = function() {
+      $('#cards').masonry({
+        itemSelector: '.card-wrapper',
+        isAnimated: true
+      });
+      $('#cards').masonry('reload');
   }
   Template.card.rendered = function() {
     elem = $(this.firstNode);
