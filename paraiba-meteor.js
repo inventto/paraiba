@@ -3,6 +3,7 @@ Phones = new Meteor.Collection("phones");
 Emails = new Meteor.Collection("emails");
 Sites = new Meteor.Collection("sites");
 Mouses = new Meteor.Collection("mouses");
+Agenda = new Meteor.Collection("agenda");
 function get(id){
   return (elem = document.getElementById(id)) && elem.value || "";
 }
@@ -31,6 +32,19 @@ if (Meteor.isClient) {
   Template.mouses.mouses = function () {
     return Mouses.find();
   };
+  Template.agenda.time_in_the_day = function(){
+    var agenda = [];
+    for (var hours = 7; hours < 23; hours++){
+      for (var minutes = 0; minutes < 60; minutes += 30){
+        time = {hours: hours < 10 ? "0"+hours : hours, minutes: minutes < 10 ? "0"+minutes : minutes};
+        schedule = Agenda.findOne(time);
+        if (!schedule){
+           agenda.push(_.extend(time, {css_class: "free", description: "livre"}));
+        } else agenda.push(schedule);
+      }
+    }
+    return agenda;
+  }
   newCard = function() {
       Session.set("myCard",
         Cards.insert({
@@ -63,6 +77,16 @@ if (Meteor.isClient) {
   Template.yourcard.logo_url = function(){
    return this.logo+ "/convert?w=96&h=96";
   }
+  Template.agenda.events({
+    "click td": function (evt) {
+      console.log("click :: ", evt, this);
+      if (this.css_class == "free"){
+        Agenda.insert({hours: this.hours, minutes: this.minutes, css_class: "busy", description: "ocupado" });
+      } else {
+        Agenda.remove(this._id);
+      }
+    }
+  });
   Template.yourcard.events({
     "keyup input, change input" : function (evt) {
       value = get(evt.target.id);

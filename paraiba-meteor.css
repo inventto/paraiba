@@ -171,3 +171,24 @@ ul li span {
        -o-transform: rotateX(-90deg);
           transform: rotateX(-90deg);
 }
+.agenda {
+  font-size: 10px;
+}
+.busy {
+  background-color: red;
+}
+.free {
+  background-color: green;
+}
+.busy, .free {
+  color: white;
+  cursor:pointer;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+.agenda {
+  position: fixed;
+  right: 0;
+  top: 0;
+}

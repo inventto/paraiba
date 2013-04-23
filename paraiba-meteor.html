@@ -8,6 +8,7 @@
     {{> cards}}
   </div>
   {{> mouses}}
+  {{>agenda}}
 </body>
 
 <template name="mouses">
@@ -59,7 +60,6 @@
     <img src="{{ card_photo_url }}"/>
   </div>
 {{/if}}
-
 </template>
 <template name="yourcard" >
 <div class="card-wrapper masonry-brick">
@@ -133,4 +133,14 @@
      {{> card}}
    </div>
   {{/each}}
+</template>
+<template name="agenda">
+<table class="agenda">
+  {{#each time_in_the_day}}
+  <tr class="schedule-task" hour="{{hours}}" minutes={{minutes}}>
+    <td class="time">{{hours}}:{{minutes}}</td>
+    <td class="description {{css_class}}">{{description}}</td>
+  </tr>
+  {{/each}}
+</table>
 </template>
