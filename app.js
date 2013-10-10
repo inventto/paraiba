@@ -16,10 +16,10 @@ function randomColor(){
 myCard = {};
 if (Meteor.isClient) {
   Meteor.subscribe('cards');
-  Meteor.subscribe('mouses');
+  // Meteor.subscribe('mouses');
   Meteor.startup(function () {
      Session.set('user', Meteor.uuid());
-     Session.set("mouse", Mouses.insert({user: Session.get("user"), color: randomColor()}));
+      // Session.set("mouse", Mouses.insert({user: Session.get("user"), color: randomColor()}));
 
     if (!Session.get("myCard"))
       newCard();
@@ -27,11 +27,11 @@ if (Meteor.isClient) {
   });
   Template.cards.cards = function () {
     return Cards.find({editing: null},{sort: {first_at: -1}});
-    //$or: [{editing: null},{ _id: Session.get("myCard")}]
+    // $or: [{editing: null},{ _id: Session.get("myCard")}]
   };
-  Template.mouses.mouses = function () {
+  /*Template.mouses.mouses = function () {
     return Mouses.find();
-  };
+  };*/
   Template.agenda.time_in_the_day = function(){
     var agenda = [];
     for (var hours = 7; hours < 23; hours++){
