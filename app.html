@@ -9,6 +9,7 @@
   </div>
   {{> mouses}}
   {{>agenda}}
+  {{> login}}
 </body>
 
 <template name="mouses">
@@ -145,4 +146,9 @@
   </tr>
   {{/each}}
 </table>
+</template>
+<template name="login">
+  <div class="login">
+    {{loginButtons}}
+  </div>
 </template>

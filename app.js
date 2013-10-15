@@ -4,6 +4,8 @@ Emails = new Meteor.Collection("emails");
 Sites = new Meteor.Collection("sites");
 Mouses = new Meteor.Collection("mouses");
 Agenda = new Meteor.Collection("agenda");
+Login = new Meteor.Collection("login");
+
 function get(id){
   return (elem = document.getElementById(id)) && elem.value || "";
 }
