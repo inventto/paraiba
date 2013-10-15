@@ -7,3 +7,8 @@ preserve-inputs
 insecure
 autopublish
 standard-app-packages
+accounts-password
+accounts-ui
+accounts-facebook
+accounts-base
+accounts-google
