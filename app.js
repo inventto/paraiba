@@ -22,7 +22,6 @@ if (Meteor.isClient) {
   Meteor.startup(function () {
      Session.set('user', Meteor.uuid());
       // Session.set("mouse", Mouses.insert({user: Session.get("user"), color: randomColor()}));
-
     if (!Session.get("myCard"))
       newCard();
 
