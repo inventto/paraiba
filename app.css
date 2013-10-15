@@ -83,6 +83,11 @@ body {
 }
 .phone {
 }
+.login {
+  position: absolute;
+  top: 0px;
+  right: 190px;
+}
 .mouses_count {
   height: 32px;
   width: 32px;
@@ -192,3 +197,15 @@ ul li span {
   right: 0;
   top: 0;
 }
+.login {
+  position: fixed;
+  padding: 10px;
+  width: 100px;
+  height: 30px;
+  background: #7f8c8d;
+  margin: 10px 0 0 0;
+  top: 0;
+  text-align: center;
+  color: #ecf0f1;
+}
+
